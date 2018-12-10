@@ -1,0 +1,79 @@
+<!doctype html>
+
+<html ng-app="emerilOrder">
+<head>
+	<!-- META -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+	<title>Food Any Time</title>
+
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+	<style>
+		body { 
+			padding-top:50px; 
+			background:orange;
+			background-image: url(image/finedining.jpg);
+			background-size: cover;
+}
+		
+		#order-list {
+			margin-bottom:30px;
+			}
+		#order-form {
+			margin-bottom:50px;
+			}
+	</style>
+
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script><!-- load angular -->
+
+	<script src="js/controllers/main.js"></script> 
+	<script src="js/services/orders.js"></script> 
+	<script src="js/core.js"></script> 
+
+</head>
+<body ng-controller="mainController">
+	<div class="container">
+
+		<div class="jumbotron text-center">
+			<h2> Food Any Time <h2>
+			<h2> Order Your Favourite Food<h2>
+			
+		</div>
+		<div id="order-list" class="row">
+			<div class="col-sm-4 col-sm-offset-4">
+
+				
+				<div class="checkbox" ng-repeat="order in orders">
+					<label>
+						<input type="checkbox" ng-click="deleteOrder(order._id)"> {{ order.name }}
+					</label>
+				</div>
+
+				<p class="text-center" ng-show="loading">
+					<span class="fa fa-spinner fa-spin fa-3x"></span>
+				</p>
+
+			</div>
+		</div>
+
+		<div id="order-form" class="row">
+			<div class="col-sm-8 col-sm-offset-2 text-center">
+				<form>
+
+					<div class="form-group pull-right">
+						<select class="form-control" ng-model="formData.name">
+							<option selected="true" value="">-- choose your order --</option>
+							<option ng-repeat="food in foodList" value="{{food.name}}">{{food.name}} (TK-{{food.price}})</option>
+						</select>
+					</div>
+					<button type="submit" class="btn btn-primary btn-lg" ng-click="createOrder()">Add</button>
+				</form>
+			</div>
+		</div>
+
+	</div>
+
+</body>
+</html>

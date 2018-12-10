@@ -1,0 +1,14 @@
+{
+  "name": "Food Any Time",
+  "version": "0.0.1",
+  "description": "Simple Food Order System.",
+  "main": "server.js",
+  "author": "Sohel Akram and Group",
+  "dependencies": {
+    "body-parser": "~1.4.3",
+    "express": "^4.16.4",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.3.15",
+    "morgan": "^1.9.1"
+  }
+}
